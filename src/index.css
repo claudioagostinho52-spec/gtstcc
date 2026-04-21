@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Space Grotesk", sans-serif;
+
+  --color-brand-bg: #030712;
+  --color-brand-accent: #f97316; /* Unitel Orange as accent */
+  --color-brand-primary: #3b82f6; /* Professional Blue */
+  --color-brand-cyan: #22d3ee;
+  --color-brand-surface: rgba(17, 24, 39, 0.7);
+  --color-brand-border: rgba(255, 255, 255, 0.08);
+
+  --animate-height: heightOscillation 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes heightOscillation {
+  from { height: 20%; }
+  to { height: 100%; }
+}
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-slate-200 font-sans selection:bg-brand-accent selection:text-white antialiased;
+  }
+}
+
+.bento-card {
+  @apply bg-brand-surface border border-brand-border rounded-[24px] backdrop-blur-[12px] relative overflow-hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-card:hover {
+  @apply border-white/20;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.05);
+}
+
+.neon-text {
+  @apply text-brand-cyan;
+  text-shadow: 0 0 12px rgba(34, 211, 238, 0.4);
+}
+
+.unitel-accent {
+  @apply text-brand-accent;
+  text-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
+}
+
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px), 
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.status-dot {
+  @apply w-2.5 h-2.5 rounded-full relative;
+}
+
+.status-dot::after {
+  content: '';
+  @apply absolute inset-0 rounded-full animate-ping opacity-60;
+  background-color: currentColor;
+}
+
