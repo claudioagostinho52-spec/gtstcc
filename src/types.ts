@@ -12,6 +12,7 @@ export interface GloveData {
   flex: number[]; // 5 flex sensors (0-100 or normalized 0-1)
   imu: IMUData;
   timestamp: number;
+  translation?: string; // ADICIONADO: Para suportar a exibição da palavra simulada
 }
 
 export interface GestureDefinition {
